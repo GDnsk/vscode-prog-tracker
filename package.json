@@ -1,0 +1,66 @@
+{
+	"name": "prog-tracker",
+	"displayName": "Prog Tracker",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.64.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "prog-tracker.activate",
+				"title": "Activate Extension"
+			}
+		],
+		"configuration": {
+			"title": "Prog Tracker",
+			"properties": {
+				"prog-tracker.uploadInterval": {
+					"type": "number",
+					"default": "60",
+					"description": "Upload interval in seconds"
+				},
+				"prog-tracker.apiUrl": {
+					"type": "string",
+					"description": "Which url should be used to send data. If not set, the extension will not send."
+				},
+				"prog-tracker.apiKey": {
+					"type": "string",
+					"description": "API Key that will be used when send data. If not set, the extension will not send."
+				}
+			}
+		}
+	},
+	"extensionDependencies": [
+		"vscode.git"
+	],
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "yarn run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.0.0",
+		"@types/node": "14.x",
+		"@types/vscode": "^1.64.0",
+		"@vscode/test-electron": "^2.0.3",
+		"eslint": "^8.6.0",
+		"glob": "^7.2.0",
+		"mocha": "^9.1.3",
+		"typescript": "^4.5.4"
+	},
+	"dependencies": {
+		"axios": "^0.26.0",
+		"axios-retry": "^3.2.4",
+		"lodash": "^4.17.21"
+	}
+}
