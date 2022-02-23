@@ -10,7 +10,7 @@ const EMPTY = { document: null, textEditor: null };
 function activate(context) {
 	let subscriptions = context.subscriptions;
 
-	onActiveFileChange(((vscode.window.activeTextEditor || EMPTY).document));
+	onActiveFieChange(((vscode.window.activeTextEditor || EMPTY).document));
 	createStatusBar();
 	subscriptions.push(vscode.workspace.onDidChangeTextDocument(e => onFileCoding((e || EMPTY).document)));
 	subscriptions.push(vscode.window.onDidChangeActiveTextEditor(e => onActiveFileChange((e || EMPTY))));

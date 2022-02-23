@@ -48,7 +48,6 @@ const resetAllMetrics = () => {
     };
 }
 
-
 /** Check file conditions and last track to determine if should track */
 const shouldTrackCoding = (doc) => {
     if (!activeDocument)
@@ -67,11 +66,9 @@ const shouldTrackCoding = (doc) => {
 const shouldTrackInteraction = () => {
     if (!activeDocument)
         return false;
-
     // // Ignore the invalid coding file schemes
     // if (!doc || INVALID_CODING_DOCUMENT_SCHEMES.indexOf(doc.uri.scheme) >= 0)
     // return;  
-
     if (Date.now() - trackData.lastInteractionTime < INTERACTION_TRACK_INTERVAL) return false;
     // console.log(`shouldTrackInteraction: ${Date.now() - trackData.lastInteractionTime} >= ${INTERACTION_TRACK_INTERVAL}`);
     return true;
@@ -118,9 +115,6 @@ const updateActiveDocument = (doc) => {
     activeDocument = _.cloneDeep(doc);
 }
 
-
-
-
 /** @param {vscode.TextDocument} doc */
 const onActiveFileChange = async(e) => {
     if (e.document == null) return;
@@ -149,7 +143,6 @@ const onFileCoding = async(doc) => {
  * Triggered after onFileCoding. */
 const onInteraction = async(doc) => {
     // console.log(`onInteraction: ${doc ? doc.fileName || 'no file' : 'no file'}`);
-
     if (!shouldTrackInteraction(doc)) return;
 
     if (shouldSaveTrackDataByInterval()) {
